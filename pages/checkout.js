@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Stripe } from 'stripe'
 import { parseCookies, setCookie } from 'nookies'
 
@@ -11,9 +12,13 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 const CheckoutPage = ({ paymentIntent }) => {
 	// console.log(paymentIntent)
 	return (
+		<>
 		<Elements stripe={stripePromise}>
 			<CheckoutForm clientSecret={paymentIntent.client_secret} />
 		</Elements>
+
+		<Link href='/'><a>Home</a></Link>
+		</>
 	)
 }
 export default CheckoutPage
@@ -28,7 +33,7 @@ export const getServerSideProps = async (ctx) => {
 	const { paymentIntentId } = parseCookies(ctx, 'paymentIntentId')
 	let paymentIntent = ''
 
-	console.log(paymentIntentId)
+	console.log(ctx)
 
 	if(paymentIntentId) {
 		paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId)
