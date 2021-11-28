@@ -4,7 +4,7 @@ import { parseCookies, setCookie } from 'nookies'
 
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
-import CheckoutForm from './checkoutForm'
+import CheckoutForm from './stripeServerSidePropsForm'
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 

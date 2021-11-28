@@ -1,16 +1,14 @@
-
-import { Elements } from '@stripe/react-stripe-js'
-import { loadStripe } from '@stripe/stripe-js'
-import CheckoutForm from './checkoutFormIndex'
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+import Link from 'next/link'
 
 const Home = () => {
 
 	return (
-		<Elements stripe={stripePromise}>
-			<CheckoutForm />
-		</Elements>
+		<>
+			<ul>
+				<li><Link href="/stripeBasic"><a>Stripe Basic</a></Link></li>
+				<li><Link href="/stripeServerSideProps"><a>Stripe serverSideProps</a></Link></li>
+			</ul>
+		</>
 	)
 }
 export default Home

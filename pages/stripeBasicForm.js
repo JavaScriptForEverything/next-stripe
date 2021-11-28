@@ -1,6 +1,7 @@
 import { CardNumberElement, CardExpiryElement, CardCvcElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useState } from 'react'
 import axios from 'axios'
+import Link from 'next/link'
 
 const CheckoutForm = () => {
 	const stripe = useStripe()
@@ -15,7 +16,7 @@ const CheckoutForm = () => {
 
 
 		try{
-			const { data: { clientSecret } } = await axios.post('/api/checkout', {
+			const { data: { clientSecret } } = await axios.post('/api/checkout/stripeBasic', {
 				amount: 555,
 				currency: 'bdt',
 			})
@@ -48,9 +49,9 @@ const CheckoutForm = () => {
 			<CardExpiryElement />
 			<CardCvcElement />
 
-			<button type='submit' disabled={disable}>
-				{disable ? 'loading...' : 'Pay Now'}
-			</button>
+			<button type='submit' disabled={disable}> {disable ? 'loading...' : 'Pay Now'} </button>
+			<br />
+			<Link href="/"><a>Home</a></Link>
 		</form>
 	)
 }

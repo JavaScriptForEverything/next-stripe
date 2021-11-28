@@ -7,11 +7,12 @@
     "dev": "next dev"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/material": "^5.2.1",
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.1",
-    "absolute-url": "^1.2.2",
     "axios": "^0.24.0",
-    "js-cookie": "^3.0.1",
     "next": "^12.0.4",
     "next-connect": "^0.11.0",
     "nookies": "^2.5.2",
