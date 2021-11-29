@@ -40,27 +40,20 @@ const StripeMaterialUI = () => {
 
 		setLoading(true)
 
-		// console.log(elements.getElement(CardNumberElement))
-		// setTimeout(() => {
-		// 	setActiveStape(step => step + 1)
-		// 	setLoading(false)
-		// }, 2000)
-		// return
 
+		const { error, paymentMethod: { id } } = await stripe.createPaymentMethod({
+			type: 'card',
+			card: elements.getElement(CardNumberElement)
+		})
 		// Need client_secret form Backend
-		const { data : { clientSecret } } = await axios.post('/api/checkout/stripeBasic', {
+		const { data : { clientSecret } } = await axios .post('/api/checkout/stripeMui', {
+			id,
 			amount: 44,
 			currency: 'bdt'
 		})
 
-		const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
-			payment_method: {
-				card: elements.getElement(CardNumberElement)
-			}
-		})
-
 		if(error) return console.log(error)
-		console.log(paymentIntent)
+		console.log(clientSecret)
 
 		setActiveStape(step => step + 1)
 		setLoading(false)
