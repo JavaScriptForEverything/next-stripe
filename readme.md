@@ -11,6 +11,6 @@
 
 <img
 	width = "100%"
-	src="https://github.com/JavaScriptForEverything/javascriptforeverything/blob/main/BannerForGithub.png?raw=true"
+	src="https://github.com/JavaScriptForEverything/next-stripe/blob/master/public/BannerForGit_Stripe-MaterialUI.png?raw=true"
 	alt="My Profile Picture"
 />
