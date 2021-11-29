@@ -45,7 +45,6 @@ const StripeMaterialUI = () => {
 			type: 'card',
 			card: elements.getElement(CardNumberElement)
 		})
-		// Need client_secret form Backend
 		const { data : { clientSecret } } = await axios .post('/api/checkout/stripeMui', {
 			id,
 			amount: 44,
