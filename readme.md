@@ -19,10 +19,8 @@
 
 
 ###### Method-1: Back-End
-<hr />
-
 ```
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY) 	// work on NextJS too
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 export const createPaymentIntentMui = async (req, res, next) => {
 	let { id, amount, currency } = req.body
@@ -37,15 +35,12 @@ export const createPaymentIntentMui = async (req, res, next) => {
 
 	res.status(200).json({
 		status: 'success',
-		clientSecret: paymentIntent.client_secret, 		// to confirm Payment on clientSide with @stripe/react-stripe-js
+		clientSecret: paymentIntent.client_secret,
 	})
 }
 ```
-<br />
-
 
 ###### Method-1: Font-End
-<hr />
 ```
 const { error, paymentMethod: { id } } = await stripe.createPaymentMethod({
 	type: 'card',
@@ -57,15 +52,11 @@ const { data : { clientSecret } } = await axios .post('/api/checkout/stripeMui',
 	currency: 'bdt'
 })
 ```
-<br />
-<br />
 
 
 
 
 ###### Method-2: Back-End
-<hr />
-
 ```
 import { Stripe } from 'stripe'
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
@@ -81,14 +72,11 @@ export const createPaymentIntent = async (req, res, next) => {
 
 	res.status(200).json({
 		status: 'success',
-		clientSecret: paymentIntent.client_secret, 		// to confirm Payment on clientSide with @stripe/react-stripe-js
+		clientSecret: paymentIntent.client_secret,
 	})
 }
 ```
-<br />
-
 ###### Method-2: Font-End
-<hr />
 ```
 const { data : { clientSecret } } = await axios.post('/api/checkout/stripeBasic', {
 	amount: 44,
